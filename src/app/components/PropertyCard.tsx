@@ -23,7 +23,7 @@ const PropertyCard = ({
     href
 }: PropertyCardProps) => {
     return (
-        <div className="bg-[#FAFAFA] rounded-[12px] overflow-hidden border border-[#EBEBEB] transition-all p-[12px] md:p-[30px]">
+        <div className="bg-[#F4F5F7] rounded-[12px] overflow-hidden border border-[#EBEBEB] transition-all p-[12px] md:p-[30px]">
             {/* Image Container */}
             <div className="relative h-[240px] w-full rounded-[12px] overflow-hidden">
                 <Image
@@ -37,10 +37,10 @@ const PropertyCard = ({
 
             {/* Content */}
             <div className="mt-4">
-                <h3 className="text-[#2E2E2E] text-xl font-semibold mb-2">{title}</h3>
-                <p className="text-[#666666] text-sm mb-4">
+                <h3 className="text-[#1A2A52] text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-[#3A3A3C] text-sm mb-4">
                     {description}
-                    <Link href={href} className="text-[#703BF7] hover:underline ml-1">
+                    <Link href={href} className="text-[#1FD2AF] hover:underline ml-1">
                         Read More
                     </Link>
                 </p>
@@ -54,7 +54,7 @@ const PropertyCard = ({
                             width={14}
                             height={16}
                         />
-                        <span className="text-[12px] text-[#2E2E2E]">{bedrooms} Bedroom</span>
+                        <span className="text-[12px] text-[#3A3A3C]">{bedrooms} Bedroom</span>
                     </div>
                     <div className="flex items-center gap-2 border border-[#EBEBEB] rounded-[28px] px-[14px] py-[6px]">
                         <Image
@@ -63,7 +63,7 @@ const PropertyCard = ({
                             width={14}
                             height={16}
                         />
-                        <span className="text-[12px] text-[#2E2E2E]">{bathrooms} Bathroom</span>
+                        <span className="text-[12px] text-[#3A3A3C]">{bathrooms} Bathroom</span>
                     </div>
                     {hasVilla && (
                         <div className="flex items-center gap-2 border border-[#EBEBEB] rounded-[28px] px-[14px] py-[6px]">
@@ -73,7 +73,7 @@ const PropertyCard = ({
                                 width={14}
                                 height={16}
                             />
-                            <span className="text-[12px] text-[#2E2E2E]">Villa</span>
+                            <span className="text-[12px] text-[#3A3A3C]">Villa</span>
                         </div>
                     )}
                 </div>
@@ -81,14 +81,14 @@ const PropertyCard = ({
                 {/* Price and CTA */}
                 <div className="flex sm:flex-row gap-10 items-center sm:items-center">
                     <div>
-                        <span className="text-sm text-[#666666]">Price</span>
-                        <div className="text-xl font-semibold text-[#2E2E2E]">
+                        <span className="text-sm text-[#3A3A3C]">Price</span>
+                        <div className="text-xl font-semibold text-[#1A2A52]">
                             ₦{price.toLocaleString()}
                         </div>
                     </div>
                     <Link
                         href={href}
-                        className="inline-block bg-[#703BF7] text-white px-[16px] py-[14px] rounded-[8px] text-[14px] font-medium hover:bg-[#5f32d3] transition-all sm:ml-auto"
+                        className="inline-block bg-[#1FD2AF] text-white px-[16px] py-[14px] rounded-[8px] text-[14px] font-medium hover:bg-[#1AB89A] transition-all sm:ml-auto"
                     >
                         View Property Details
                     </Link>

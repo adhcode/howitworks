@@ -19,12 +19,12 @@ const Header = () => {
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 w-full bg-[#FAFAFA] z-50 transition-all duration-300 ${scrolled ? 'shadow-sm' : 'border-b border-[#EBEBEB]'}`}>
-                <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-[80px]">
+            <header className={`fixed top-0 left-0 right-0 w-full bg-[#F4F5F7] z-50 transition-all duration-300 ${scrolled ? 'shadow-sm' : 'border-b border-[#EBEBEB]'}`}>
+                <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-0 h-[80px]">
                     {/* Brand */}
                     <div className="w-[180px]">
                         <Link href="/" className="relative z-20">
-                            <span className="text-2xl font-extrabold text-purple-600">Howitworks</span>
+                            <Image src="/logo.svg" alt="logo" width={40} height={40} />
                         </Link>
                     </div>
 
@@ -32,29 +32,41 @@ const Header = () => {
                     <nav className="hidden lg:flex flex-1 items-center justify-center gap-8">
                         <Link
                             href="/"
-                            className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                            className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                         >
                             Home
                         </Link>
                         <Link
                             href="/about"
-                            className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                            className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                         >
                             About Us
                         </Link>
                         <Link
                             href="/properties"
-                            className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                            className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                         >
                             Properties
                         </Link>
+                        <Link
+                            href="/blog"
+                            className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
+                        >
+                            Blog
+                        </Link>
                     </nav>
 
-                    {/* Contact Us Button - Desktop */}
-                    <div className="hidden lg:block w-[180px] text-right">
+                    {/* Right Side Buttons - Desktop */}
+                    <div className="hidden lg:flex items-center gap-4 w-[220px] justify-end">
+                        <Link
+                            href="/login"
+                            className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
+                        >
+                            Login
+                        </Link>
                         <Link
                             href="/contact"
-                            className="px-6 py-2 rounded-full bg-purple-600 text-white text-[14px] font-medium hover:bg-purple-700 transition-all"
+                            className="px-6 py-2 rounded-full bg-[#1FD2AF] text-white text-[14px] font-medium hover:bg-[#1AB89A] transition-all"
                         >
                             Contact Us
                         </Link>
@@ -82,32 +94,48 @@ const Header = () => {
                         <nav className="flex flex-col gap-4">
                             <Link
                                 href="/"
-                                className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                                className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 href="/about"
-                                className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                                className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 About Us
                             </Link>
                             <Link
                                 href="/properties"
-                                className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                                className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Properties
                             </Link>
                             <Link
-                                href="/contact"
-                                className="px-4 py-2 text-[14px] font-medium text-[#2E2E2E] hover:text-purple-600 transition-colors"
+                                href="/blog"
+                                className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Contact Us
+                                Blog
                             </Link>
+                            <div className="border-t border-[#EBEBEB] pt-4 mt-2">
+                                <Link
+                                    href="/login"
+                                    className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors block"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="px-4 py-2 text-[14px] font-medium text-[#3A3A3C] hover:text-[#1FD2AF] transition-colors block"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Contact Us
+                                </Link>
+                            </div>
                         </nav>
                     </div>
                 )}

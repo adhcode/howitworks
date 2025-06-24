@@ -13,13 +13,13 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ rating, title, content, author }: TestimonialCardProps) => {
     return (
-        <div className="bg-[#FAFAFA] rounded-[10px] p-6 border border-[#EBEBEB]">
+        <div className="bg-[#F4F5F7] rounded-[10px] p-6 border border-[#EBEBEB]">
             {/* Rating Stars */}
             <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, index) => (
                     <div key={index} className="w-8 h-8 rounded-full border border-[#EBEBEB] flex items-center justify-center">
                         <svg
-                            className={`w-5 h-5 ${index < rating ? 'text-[#FFC107]' : 'text-[#E1E1E1]'}`}
+                            className={`w-5 h-5 ${index < rating ? 'text-[#FFB300]' : 'text-[#E1E1E1]'}`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                         >
@@ -30,8 +30,8 @@ const TestimonialCard = ({ rating, title, content, author }: TestimonialCardProp
             </div>
 
             {/* Content */}
-            <h3 className="text-[#2E2E2E] text-lg font-semibold mb-2">{title}</h3>
-            <p className="text-[#666666] text-[16px] mb-6">{content}</p>
+            <h3 className="text-[#1A2A52] text-lg font-semibold mb-2">{title}</h3>
+            <p className="text-[#3A3A3C] text-[16px] mb-6">{content}</p>
 
             {/* Author */}
             <div className="flex items-center gap-3">
@@ -44,8 +44,8 @@ const TestimonialCard = ({ rating, title, content, author }: TestimonialCardProp
                     />
                 </div>
                 <div>
-                    <h4 className="text-[#2E2E2E] font-medium">{author.name}</h4>
-                    <p className="text-[#666666] text-sm">{author.location}</p>
+                    <h4 className="text-[#1A2A52] font-medium">{author.name}</h4>
+                    <p className="text-[#3A3A3C] text-sm">{author.location}</p>
                 </div>
             </div>
         </div>

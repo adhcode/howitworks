@@ -12,7 +12,7 @@ const TESTIMONIALS = [
         author: {
             name: 'Tade Sholayemi',
             location: 'Nigeria, Lagos',
-            image: 'https://ui-avatars.com/api/?name=Tade+Sholayemi&background=703BF7&color=fff'
+            image: 'https://ui-avatars.com/api/?name=Tade+Sholayemi&background=1FD2AF&color=fff'
         }
     },
     {
@@ -22,7 +22,7 @@ const TESTIMONIALS = [
         author: {
             name: 'Emelie Thomson',
             location: 'USA, Florida',
-            image: 'https://ui-avatars.com/api/?name=Emelie+Thomson&background=703BF7&color=fff'
+            image: 'https://ui-avatars.com/api/?name=Emelie+Thomson&background=1FD2AF&color=fff'
         }
     },
     {
@@ -32,7 +32,7 @@ const TESTIMONIALS = [
         author: {
             name: 'John Mans',
             location: 'USA, Nevada',
-            image: 'https://ui-avatars.com/api/?name=John+Mans&background=703BF7&color=fff'
+            image: 'https://ui-avatars.com/api/?name=John+Mans&background=1FD2AF&color=fff'
         }
     }
 ];
@@ -40,10 +40,15 @@ const TESTIMONIALS = [
 const Testimonials = () => {
     const [displayedTestimonials, setDisplayedTestimonials] = useState(TESTIMONIALS);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 768) {
+            const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+            const mobile = windowWidth < 768;
+            setIsMobile(mobile);
+
+            if (mobile) {
                 setDisplayedTestimonials([TESTIMONIALS[currentIndex]]);
             } else {
                 setDisplayedTestimonials(TESTIMONIALS);
@@ -51,8 +56,10 @@ const Testimonials = () => {
         };
 
         handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
     }, [currentIndex]);
 
     const handlePrevious = () => {
@@ -64,19 +71,19 @@ const Testimonials = () => {
     };
 
     return (
-        <section className="py-16 px-4 lg:px-16">
+        <section className="py-16 px-4 lg:px-16" id="testimonials">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
                     <div>
-                        <h2 className="text-[24px] md:text-[38px] font-semibold text-[#2E2E2E] mb-2">What Our Clients Say</h2>
-                        <p className="text-[#666666] text-base max-w-[520px]">
-                            Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estrain for their real estate needs.
+                        <h2 className="text-[24px] md:text-[38px] font-semibold text-[#1A2A52] mb-2">What Our Clients Say</h2>
+                        <p className="text-[#3A3A3C] text-base max-w-[520px]">
+                            Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Howitworks for their real estate needs.
                         </p>
                     </div>
                     <Link
                         href="/testimonials"
-                        className="text-[#703BF7] md:block hidden font-medium hover:text-[#5f32d3] transition-all"
+                        className="text-[#1FD2AF] md:block hidden font-medium hover:text-[#1AB89A] transition-all"
                     >
                         View All Testimonials
                     </Link>
@@ -95,24 +102,34 @@ const Testimonials = () => {
                 {/* Pagination */}
                 <div className="flex items-center justify-between mt-8">
                     <Link
-                        href="/properties"
-                        className="text-[#2E2E2E] md:hidden font-medium hover:text-[#5f32d3] transition-all text-[14px] border border-[#EBEBEB] bg-[#FAFAFA] rounded-[8px] px-4 py-2"
+                        href="/testimonials"
+                        className="text-[#3A3A3C] md:hidden font-medium hover:text-[#1FD2AF] transition-all text-[14px] border border-[#EBEBEB] bg-[#F4F5F7] rounded-[8px] px-4 py-2"
                     >
                         View All Testimonials
                     </Link>
 
-
                     <div className="flex gap-2 items-center">
-                        <button className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F5F3FF] transition-all">
+                        <button
+                            onClick={handlePrevious}
+                            className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F4F5F7] transition-all disabled:opacity-50"
+                            disabled={false}
+                        >
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M12.5 15L7.5 10L12.5 5" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M12.5 15L7.5 10L12.5 5" stroke="#3A3A3C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
                         <div>
-                            <p className="text-sm text-[#666666]">01 of 60</p></div>
-                        <button className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F5F3FF] transition-all">
+                            <p className="text-sm text-[#3A3A3C]">
+                                {String(currentIndex + 1).padStart(2, '0')} of {String(TESTIMONIALS.length).padStart(2, '0')}
+                            </p>
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F4F5F7] transition-all disabled:opacity-50"
+                            disabled={false}
+                        >
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#3A3A3C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
                     </div>

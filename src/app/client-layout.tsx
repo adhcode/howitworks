@@ -1,25 +1,27 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Loading from './loading'
+import { usePathname } from 'next/navigation';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function ClientLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    const [isLoading, setIsLoading] = useState(true)
+    const pathname = usePathname();
+    const isRealtorPage = pathname?.startsWith('/realtor');
+    const isAdminPage = pathname?.startsWith('/admin');
 
-    useEffect(() => {
-        // Simulate loading time
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 2000)
-    }, [])
-
-    if (isLoading) {
-        return <Loading />
+    if (isRealtorPage || isAdminPage) {
+        return <>{children}</>;
     }
 
-    return <>{children}</>
+    return (
+        <>
+            <Header />
+            {children}
+            <Footer />
+        </>
+    );
 } 

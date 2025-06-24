@@ -107,23 +107,23 @@ const PropertyGrid = () => {
             <div className="flex items-center justify-between mt-8">
                 <Link
                     href="/properties"
-                    className="text-[#2E2E2E] md:hidden font-medium hover:text-[#5f32d3] transition-all text-[14px] border border-[#EBEBEB] bg-[#FAFAFA] rounded-[8px] px-4 py-2"
+                    className="text-[#1A2A52] md:hidden font-medium hover:text-[#1FD2AF] transition-all text-[14px] border border-[#EBEBEB] bg-[#F4F5F7] rounded-[8px] px-4 py-2"
                 >
                     View All Properties
                 </Link>
 
 
                 <div className="flex gap-2 items-center">
-                    <button className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F5F3FF] transition-all">
+                    <button className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F4F5F7] transition-all">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M12.5 15L7.5 10L12.5 5" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="#3A3A3C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                     <div>
-                        <p className="text-sm text-[#666666]">01 of 60</p></div>
-                    <button className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F5F3FF] transition-all">
+                        <p className="text-sm text-[#3A3A3C]">01 of 60</p></div>
+                    <button className="w-10 h-10 rounded-full border border-[#EBEBEB] flex items-center justify-center hover:bg-[#F4F5F7] transition-all">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#3A3A3C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                 </div>

@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import LoadingProvider from "./providers/loading-provider";
+import ClientLayout from "./client-layout";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
   subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -22,11 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${urbanist.variable}`}>
+      <body className={`${urbanist.variable} ${poppins.variable}`}>
         <LoadingProvider>
-          <Header />
-          {children}
-          <Footer />
+          <ClientLayout>
+            {children}
+          </ClientLayout>
         </LoadingProvider>
       </body>
     </html>
