@@ -1,0 +1,99 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")   // Prisma reads the Neon URL from .env
+}
+
+model Realtor {
+  id                  String       @id @default(uuid())
+  email               String       @unique
+  firstName           String
+  lastName            String
+  phoneNumber         String?
+  residentialAddress  String?
+  bankName            String?
+  accountNumber       String?
+  accountName         String?
+  profileImage        String?
+  slug                String       @unique
+  clerkUserId         String       @unique
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  
+  // Relations
+  properties          Property[]
+  leads               Lead[]
+  commissions         Commission[]
+}
+
+model Property {
+  id              String       @id @default(uuid())
+  title           String
+  description     String?
+  price           Float
+  location        String
+  bedrooms        Int?
+  bathrooms       Int?
+  area            Float?
+  propertyType    String       // e.g., "house", "apartment", "land"
+  status          String       @default("active") // "active", "sold", "rented"
+  images          String[]     // Array of image URLs
+  realtorId       String
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  
+  // Relations
+  realtor         Realtor      @relation(fields: [realtorId], references: [id], onDelete: Cascade)
+  leads           Lead[]
+  commissions     Commission[]
+}
+
+model Lead {
+  id              String       @id @default(uuid())
+  name            String
+  email           String
+  phone           String?
+  message         String?
+  status          String       @default("new") // "new", "contacted", "qualified", "converted", "lost"
+  source          String?      // "website", "referral", "social_media", etc.
+  propertyId      String?
+  realtorId       String
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  
+  // Relations
+  property        Property?    @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  realtor         Realtor      @relation(fields: [realtorId], references: [id], onDelete: Cascade)
+}
+
+model Commission {
+  id              String       @id @default(uuid())
+  client          String
+  amount          Float
+  status          String       @default("pending") // "pending", "paid"
+  transactionDate DateTime
+  realtorId       String
+  propertyId      String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  
+  // Relations
+  realtor         Realtor      @relation(fields: [realtorId], references: [id], onDelete: Cascade)
+  property        Property?    @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+}
+
+model Blog {
+  id              String       @id @default(uuid())
+  title           String
+  content         String
+  excerpt         String?
+  featuredImage   String?
+  slug            String       @unique
+  published       Boolean      @default(false)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}

@@ -115,7 +115,7 @@ export default function AdminDashboard() {
                                         </div>
                                         <div className="text-3xl font-bold text-gray-900 mb-2">47</div>
                                         <p className="text-sm text-gray-600">Active Realtors</p>
-                                    </div>
+                                    </div> '  '
                                 </div>
                                 <div className="bg-white p-6 rounded-lg border border-gray-200">
                                     <div className="flex flex-col items-center text-center">

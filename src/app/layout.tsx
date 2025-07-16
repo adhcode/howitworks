@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import LoadingProvider from "./providers/loading-provider";
 import ClientLayout from "./client-layout";
+import AuthProvider from "./providers/auth-provider";
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -29,11 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.variable} ${poppins.variable}`}>
-        <LoadingProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </LoadingProvider>
+        <AuthProvider>
+          <LoadingProvider>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </LoadingProvider>
+        </AuthProvider>
       </body>
     </html>
   );

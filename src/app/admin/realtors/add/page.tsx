@@ -33,9 +33,35 @@ export default function AddNewRealtor() {
         }));
     };
 
-    const handleSaveRealtor = () => {
-        // Handle save logic
-        console.log('Adding new realtor:', formData);
+    const handleSaveRealtor = async () => {
+        try {
+            // Validate required fields
+            if (!formData.fullName || !formData.email || !formData.temporaryPassword) {
+                alert('Please fill in all required fields (Full Name, Email, Temporary Password)');
+                return;
+            }
+
+            const response = await fetch('/api/admin/realtors', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(`Realtor created successfully!\nRealtor URL: ${result.realtorUrl}`);
+                // Reset form
+                setFormData(initialFormData);
+            } else {
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Error creating realtor:', error);
+            alert('An error occurred while creating the realtor');
+        }
     };
 
     const handleCancel = () => {

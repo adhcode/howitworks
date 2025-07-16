@@ -12,8 +12,10 @@ export default function ClientLayout({
     const pathname = usePathname();
     const isRealtorPage = pathname?.startsWith('/realtor');
     const isAdminPage = pathname?.startsWith('/admin');
+    const isInvestorPage = pathname?.startsWith('/investor');
+    const isLoginPage = pathname === '/login';
 
-    if (isRealtorPage || isAdminPage) {
+    if (isRealtorPage || isAdminPage || isInvestorPage || isLoginPage) {
         return <>{children}</>;
     }
 
