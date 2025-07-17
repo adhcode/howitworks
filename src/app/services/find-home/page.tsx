@@ -11,15 +11,52 @@ export default function FindHomePage() {
             {/* Hero Section */}
             <section className="relative bg-gradient-to-br from-[#F4F5F7] to-white py-20 lg:py-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Mobile Back Link */}
+                    <div className="lg:hidden mb-8">
+                        <Link
+                            href="/"
+                            className="inline-flex items-center text-[#1FD2AF] hover:text-[#1AB89A] transition-colors"
+                        >
+                            <FiArrowLeft className="mr-2" />
+                            Back to Home
+                        </Link>
+                    </div>
+
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <Link
-                                href="/"
-                                className="inline-flex items-center text-[#1FD2AF] hover:text-[#1AB89A] mb-6 transition-colors"
-                            >
-                                <FiArrowLeft className="mr-2" />
-                                Back to Home
-                            </Link>
+                        {/* Image Section - First on mobile, second on desktop */}
+                        <div className="relative order-1 lg:order-2">
+                            <Image
+                                src="/house/house1.png"
+                                alt="Dream Home"
+                                width={600}
+                                height={400}
+                                className="rounded-2xl shadow-2xl w-full"
+                            />
+                            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-12 h-12 bg-[#1FD2AF] rounded-full flex items-center justify-center">
+                                        <FiHome className="text-white text-xl" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-600">Properties Available</p>
+                                        <p className="text-2xl font-bold text-[#1A2A52]">1,500+</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Text Section - Second on mobile, first on desktop */}
+                        <div className="order-2 lg:order-1">
+                            {/* Desktop Back Link */}
+                            <div className="hidden lg:block">
+                                <Link
+                                    href="/"
+                                    className="inline-flex items-center text-[#1FD2AF] hover:text-[#1AB89A] mb-6 transition-colors"
+                                >
+                                    <FiArrowLeft className="mr-2" />
+                                    Back to Home
+                                </Link>
+                            </div>
 
                             <h1 className="text-4xl lg:text-6xl font-bold text-[#1A2A52] mb-6 leading-tight">
                                 Find Your Dream Home
@@ -43,27 +80,6 @@ export default function FindHomePage() {
                                 >
                                     Contact Realtor
                                 </Link>
-                            </div>
-                        </div>
-
-                        <div className="relative">
-                            <Image
-                                src="/house/house1.png"
-                                alt="Dream Home"
-                                width={600}
-                                height={400}
-                                className="rounded-2xl shadow-2xl"
-                            />
-                            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
-                                <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-12 bg-[#1FD2AF] rounded-full flex items-center justify-center">
-                                        <FiHome className="text-white text-xl" />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-gray-600">Properties Available</p>
-                                        <p className="text-2xl font-bold text-[#1A2A52]">1,500+</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
