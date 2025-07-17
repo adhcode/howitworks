@@ -39,8 +39,8 @@ export default function PropertyManagementPage() {
                             </h1>
 
                             <p className="text-lg sm:text-xl text-[#3A3A3C] mb-6 sm:mb-8 leading-relaxed">
-                                The smart, user-friendly mobile application that resolves long-standing issues between landlords and tenants.
-                                Download our app and experience seamless property management.
+                                How It Works Global Limited offers a comprehensive suite of property maintenance and management services designed to resolve
+                                long-standing issues between landlords and tenants using a smart, user-friendly mobile application.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
