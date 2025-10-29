@@ -49,3 +49,6 @@ yarn-error.log*
 # Test files (keep test scripts but ignore results)
 test-results/
 *.test.js.snap
+
+# Vercel - ignore backend for frontend deployments
+.vercel
