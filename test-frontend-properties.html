@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Properties Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            background: #703BF7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5a2fd4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frontend Properties Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Check API Configuration</h2>
+        <button onclick="testApiConfig()">Run Test</button>
+        <div id="config-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Fetch All Properties (Public)</h2>
+        <button onclick="testFetchAllProperties()">Run Test</button>
+        <div id="all-properties-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Fetch Featured Properties (Public)</h2>
+        <button onclick="testFetchFeaturedProperties()">Run Test</button>
+        <div id="featured-properties-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Login as Admin</h2>
+        <button onclick="testAdminLogin()">Run Test</button>
+        <div id="login-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 5: Fetch Properties as Admin</h2>
+        <button onclick="testAdminFetchProperties()">Run Test</button>
+        <div id="admin-properties-result"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:3004/api';
+        let authToken = '';
+
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            element.innerHTML += `<p class="${className}">${message}</p>`;
+        }
+
+        function logJson(elementId, data) {
+            const element = document.getElementById(elementId);
+            element.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        function clearLog(elementId) {
+            document.getElementById(elementId).innerHTML = '';
+        }
+
+        async function testApiConfig() {
+            clearLog('config-result');
+            log('config-result', '🔍 Checking API Configuration...', 'info');
+            log('config-result', `API Base URL: ${API_BASE_URL}`, 'info');
+            log('config-result', `Auth Token: ${authToken || 'Not set'}`, 'info');
+            log('config-result', `LocalStorage Token: ${localStorage.getItem('access_token') || 'Not set'}`, 'info');
+        }
+
+        async function testFetchAllProperties() {
+            clearLog('all-properties-result');
+            log('all-properties-result', '🔍 Fetching all properties...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/properties`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                log('all-properties-result', `Status: ${response.status}`, response.ok ? 'success' : 'error');
+                
+                const data = await response.json();
+                log('all-properties-result', `✅ Found ${data.properties?.length || 0} properties`, 'success');
+                logJson('all-properties-result', data);
+            } catch (error) {
+                log('all-properties-result', `❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        }
+
+        async function testFetchFeaturedProperties() {
+            clearLog('featured-properties-result');
+            log('featured-properties-result', '🔍 Fetching featured properties...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/properties/featured`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                log('featured-properties-result', `Status: ${response.status}`, response.ok ? 'success' : 'error');
+                
+                const data = await response.json();
+                log('featured-properties-result', `✅ Found ${data.length || 0} featured properties`, 'success');
+                logJson('featured-properties-result', data);
+            } catch (error) {
+                log('featured-properties-result', `❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        }
+
+        async function testAdminLogin() {
+            clearLog('login-result');
+            log('login-result', '🔐 Attempting admin login...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@example.com',
+                        password: 'admin123'
+                    })
+                });
+
+                log('login-result', `Status: ${response.status}`, response.ok ? 'success' : 'error');
+                
+                const data = await response.json();
+                
+                if (data.access_token) {
+                    authToken = data.access_token;
+                    localStorage.setItem('access_token', authToken);
+                    log('login-result', '✅ Login successful!', 'success');
+                    log('login-result', `Token: ${authToken.substring(0, 20)}...`, 'info');
+                } else {
+                    log('login-result', '❌ No token received', 'error');
+                }
+                
+                logJson('login-result', data);
+            } catch (error) {
+                log('login-result', `❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        }
+
+        async function testAdminFetchProperties() {
+            clearLog('admin-properties-result');
+            
+            if (!authToken && !localStorage.getItem('access_token')) {
+                log('admin-properties-result', '❌ Please login first (Test 4)', 'error');
+                return;
+            }
+
+            const token = authToken || localStorage.getItem('access_token');
+            log('admin-properties-result', '🔍 Fetching properties as admin...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/properties`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                log('admin-properties-result', `Status: ${response.status}`, response.ok ? 'success' : 'error');
+                
+                const data = await response.json();
+                log('admin-properties-result', `✅ Found ${data.properties?.length || 0} properties`, 'success');
+                logJson('admin-properties-result', data);
+            } catch (error) {
+                log('admin-properties-result', `❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        }
+
+        // Auto-run basic tests on load
+        window.onload = () => {
+            console.log('Frontend Properties Test loaded');
+            console.log('API Base URL:', API_BASE_URL);
+        };
+    </script>
+</body>
+</html>

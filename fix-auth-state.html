@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix Auth State</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #703BF7;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #5a2fd4;
+        }
+        .success { color: #22c55e; }
+        .error { color: #ef4444; }
+        .info { color: #3b82f6; }
+        pre {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix Auth State</h1>
+        <p>This tool will help you fix authentication issues in the frontend.</p>
+
+        <div class="section">
+            <h2>Current State</h2>
+            <div id="current-state"></div>
+        </div>
+
+        <div class="section">
+            <h2>Actions</h2>
+            <button onclick="checkAuth()">Check Auth State</button>
+            <button onclick="clearAuth()">Clear All Auth Data</button>
+            <button onclick="loginAsAdmin()">Quick Login as Admin</button>
+            <button onclick="fixTokenKey()">Fix Token Key</button>
+        </div>
+
+        <div class="section">
+            <h2>Results</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3004/api';
+
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            results.innerHTML += `<p class="${className}">${message}</p>`;
+        }
+
+        function checkAuth() {
+            document.getElementById('results').innerHTML = '';
+            log('🔍 Checking authentication state...', 'info');
+
+            const accessToken = localStorage.getItem('access_token');
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+
+            log(`access_token: ${accessToken ? '✅ Present' : '❌ Missing'}`, accessToken ? 'success' : 'error');
+            log(`token: ${token ? '✅ Present' : '❌ Missing'}`, token ? 'success' : 'error');
+            log(`user: ${user ? '✅ Present' : '❌ Missing'}`, user ? 'success' : 'error');
+
+            if (user) {
+                try {
+                    const userData = JSON.parse(user);
+                    log(`User: ${userData.firstName} ${userData.lastName} (${userData.role})`, 'success');
+                } catch (e) {
+                    log('❌ User data is corrupted', 'error');
+                }
+            }
+
+            updateCurrentState();
+        }
+
+        function clearAuth() {
+            document.getElementById('results').innerHTML = '';
+            log('🧹 Clearing all auth data...', 'info');
+
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            sessionStorage.clear();
+
+            log('✅ All auth data cleared', 'success');
+            log('💡 Refresh the page to see changes', 'info');
+
+            updateCurrentState();
+        }
+
+        async function loginAsAdmin() {
+            document.getElementById('results').innerHTML = '';
+            log('🔐 Logging in as admin...', 'info');
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@example.com',
+                        password: 'admin123'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Store with correct keys
+                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('token', data.access_token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+
+                log('✅ Login successful!', 'success');
+                log(`User: ${data.user.firstName} ${data.user.lastName}`, 'success');
+                log(`Role: ${data.user.role}`, 'success');
+                log('💡 Refresh the page or go to http://localhost:3000/admin/properties', 'info');
+
+                updateCurrentState();
+            } catch (error) {
+                log(`❌ Login failed: ${error.message}`, 'error');
+            }
+        }
+
+        function fixTokenKey() {
+            document.getElementById('results').innerHTML = '';
+            log('🔧 Fixing token key...', 'info');
+
+            const token = localStorage.getItem('token');
+            const accessToken = localStorage.getItem('access_token');
+
+            if (token && !accessToken) {
+                localStorage.setItem('access_token', token);
+                log('✅ Copied token to access_token', 'success');
+            } else if (accessToken && !token) {
+                localStorage.setItem('token', accessToken);
+                log('✅ Copied access_token to token', 'success');
+            } else if (token && accessToken) {
+                log('✅ Both keys already exist', 'success');
+            } else {
+                log('❌ No token found to fix', 'error');
+            }
+
+            updateCurrentState();
+        }
+
+        function updateCurrentState() {
+            const stateDiv = document.getElementById('current-state');
+            const accessToken = localStorage.getItem('access_token');
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+
+            let html = '<pre>';
+            html += `access_token: ${accessToken ? '✅ Present' : '❌ Missing'}\n`;
+            html += `token: ${token ? '✅ Present' : '❌ Missing'}\n`;
+            html += `user: ${user ? '✅ Present' : '❌ Missing'}\n`;
+
+            if (user) {
+                try {
+                    const userData = JSON.parse(user);
+                    html += `\nUser Details:\n`;
+                    html += `  Name: ${userData.firstName} ${userData.lastName}\n`;
+                    html += `  Email: ${userData.email}\n`;
+                    html += `  Role: ${userData.role}\n`;
+                } catch (e) {
+                    html += '\n❌ User data is corrupted\n';
+                }
+            }
+
+            html += '</pre>';
+            stateDiv.innerHTML = html;
+        }
+
+        // Check state on load
+        window.onload = () => {
+            updateCurrentState();
+        };
+    </script>
+</body>
+</html>

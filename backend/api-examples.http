@@ -1,0 +1,216 @@
+# Real Estate API Examples
+# Use this file with REST Client extension in VS Code or similar tools
+
+### Variables
+@baseUrl = http://localhost:3001/api
+@adminToken = your_admin_jwt_token_here
+@realtorToken = your_realtor_jwt_token_here
+@investorToken = your_investor_jwt_token_here
+
+### 1. Authentication - Login Admin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
+
+### 2. Authentication - Login Realtor
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "realtor@example.com",
+  "password": "realtor123"
+}
+
+### 3. Authentication - Login Investor
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "investor@example.com",
+  "password": "investor123"
+}
+
+### 4. Register New User (Investor)
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "newinvestor@example.com",
+  "password": "password123",
+  "firstName": "New",
+  "lastName": "Investor",
+  "role": "INVESTOR"
+}
+
+### 5. Get Current User Profile
+GET {{baseUrl}}/auth/profile
+Authorization: Bearer {{adminToken}}
+
+### 6. Admin - Get All Users
+GET {{baseUrl}}/users
+Authorization: Bearer {{adminToken}}
+
+### 7. Admin - Get All Realtors
+GET {{baseUrl}}/admin/realtors
+Authorization: Bearer {{adminToken}}
+
+### 8. Admin - Get All Investors
+GET {{baseUrl}}/admin/investors
+Authorization: Bearer {{adminToken}}
+
+### 9. Admin - Get Dashboard Stats
+GET {{baseUrl}}/admin/dashboard
+Authorization: Bearer {{adminToken}}
+
+### 10. Admin - Get Analytics
+GET {{baseUrl}}/admin/analytics
+Authorization: Bearer {{adminToken}}
+
+### 11. Realtor - Get Profile
+GET {{baseUrl}}/realtor/profile
+Authorization: Bearer {{realtorToken}}
+
+### 12. Realtor - Update Profile
+PUT {{baseUrl}}/realtor/profile
+Authorization: Bearer {{realtorToken}}
+Content-Type: application/json
+
+{
+  "phoneNumber": "+234 123 456 7890",
+  "residentialAddress": "Updated Address, Lagos",
+  "bankName": "Updated Bank",
+  "accountNumber": "9876543210",
+  "accountName": "John Doe Updated"
+}
+
+### 13. Realtor - Get Dashboard
+GET {{baseUrl}}/realtor/dashboard
+Authorization: Bearer {{realtorToken}}
+
+### 14. Realtor - Get Performance
+GET {{baseUrl}}/realtor/performance
+Authorization: Bearer {{realtorToken}}
+
+### 15. Realtor - Get Commissions
+GET {{baseUrl}}/realtor/commissions
+Authorization: Bearer {{realtorToken}}
+
+### 16. Realtor - Get Leads
+GET {{baseUrl}}/realtor/leads
+Authorization: Bearer {{realtorToken}}
+
+### 17. Investor - Get Profile
+GET {{baseUrl}}/investor/profile
+Authorization: Bearer {{investorToken}}
+
+### 18. Investor - Update Profile
+PUT {{baseUrl}}/investor/profile
+Authorization: Bearer {{investorToken}}
+Content-Type: application/json
+
+{
+  "phoneNumber": "+234 987 654 3210",
+  "address": "Updated Investment Address, Lagos",
+  "investmentBudget": 75000000,
+  "preferredLocation": "Victoria Island, Lagos"
+}
+
+### 19. Investor - Get Dashboard
+GET {{baseUrl}}/investor/dashboard
+Authorization: Bearer {{investorToken}}
+
+### 20. Investor - Get Investments
+GET {{baseUrl}}/investor/investments?page=1&limit=10
+Authorization: Bearer {{investorToken}}
+
+### 21. Public - Get Properties
+GET {{baseUrl}}/properties?page=1&limit=10&location=Lagos
+
+### 22. Public - Get Featured Properties
+GET {{baseUrl}}/properties/featured?limit=6
+
+### 23. Public - Create Lead
+POST {{baseUrl}}/leads
+Content-Type: application/json
+
+{
+  "name": "John Customer",
+  "email": "customer@example.com",
+  "phone": "+234 111 222 3333",
+  "message": "I'm interested in this property",
+  "realtorSlug": "john-doe",
+  "source": "website"
+}
+
+### 24. Public - Get Leads (Admin/Realtor only in practice)
+GET {{baseUrl}}/leads?page=1&limit=10&status=new
+
+### 25. Update Lead Status
+PUT {{baseUrl}}/leads/lead_id_here/status
+Authorization: Bearer {{realtorToken}}
+Content-Type: application/json
+
+{
+  "status": "contacted"
+}
+
+### 26. Public - Get Blog Posts
+GET {{baseUrl}}/blog?page=1&limit=10&published=true
+
+### 27. Public - Get Featured Blog Posts
+GET {{baseUrl}}/blog/featured?limit=3
+
+### 28. Admin - Create Blog Post
+POST {{baseUrl}}/blog
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "title": "Real Estate Investment Tips",
+  "content": "Here are some great tips for real estate investment...",
+  "excerpt": "Learn the best practices for real estate investment",
+  "featuredImage": "https://example.com/image.jpg",
+  "published": true
+}
+
+### 29. Admin - Get Commissions
+GET {{baseUrl}}/commissions?page=1&limit=10
+Authorization: Bearer {{adminToken}}
+
+### 30. Request Commission Payout
+POST {{baseUrl}}/commissions/commission_id_here/request-payout
+Authorization: Bearer {{realtorToken}}
+
+### 31. Admin - Update Commission Status
+PUT {{baseUrl}}/commissions/commission_id_here/status
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "status": "paid"
+}
+
+### 32. Investor - Create Investment
+POST {{baseUrl}}/investor/investments
+Authorization: Bearer {{investorToken}}
+Content-Type: application/json
+
+{
+  "propertyId": "property_id_here",
+  "amount": 25000000,
+  "investmentType": "partial_investment",
+  "expectedReturn": 3000000
+}
+
+### 33. Admin - Update User Status
+PUT {{baseUrl}}/users/user_id_here/status
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "isActive": false
+}

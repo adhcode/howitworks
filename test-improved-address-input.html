@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Address Input Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fafb;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #703BF7;
+            margin-bottom: 10px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h2 {
+            color: #374151;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .address-form {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .test-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .scenario {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #703BF7;
+        }
+        
+        .scenario h3 {
+            color: #703BF7;
+            margin-top: 0;
+        }
+        
+        .scenario ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .scenario li {
+            margin-bottom: 5px;
+            color: #4b5563;
+        }
+        
+        .features {
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .features h3 {
+            color: #16a34a;
+            margin-top: 0;
+        }
+        
+        .features ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .features li {
+            margin-bottom: 8px;
+            color: #374151;
+        }
+        
+        .responsive-note {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .responsive-note h4 {
+            color: #92400e;
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .test-scenarios {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Improved Address Input System</h1>
+            <p>Enhanced Nigerian Address Input with State-to-LGA Functionality</p>
+        </div>
+
+        <div class="form-section">
+            <h2>📋 Address Input Component</h2>
+            <div class="address-form">
+                <p><strong>Location:</strong> <code>frontend/src/components/AddressInput.tsx</code></p>
+                <p><strong>Usage:</strong> Realtor Registration Form</p>
+                <p><strong>Integration:</strong> <code>frontend/src/app/auth/realtor-signup/[token]/page.tsx</code></p>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>✨ New Features & Improvements</h3>
+            <ul>
+                <li><strong>Enhanced Responsiveness:</strong> Better mobile and tablet layout with proper grid breakpoints</li>
+                <li><strong>Improved Labels:</strong> Clear field labels with required indicators (*)</li>
+                <li><strong>Better Visual Feedback:</strong> Animated chevron icons and hover states</li>
+                <li><strong>State-to-LGA Cascade:</strong> Automatic LGA population when state is selected</li>
+                <li><strong>Smart Placeholders:</strong> Context-aware placeholder text based on selection state</li>
+                <li><strong>Enhanced Dropdown Styling:</strong> Purple theme with smooth transitions</li>
+                <li><strong>Click Outside to Close:</strong> Improved UX with proper dropdown management</li>
+                <li><strong>Auto-generated Postal Codes:</strong> Nigerian postal codes based on state selection</li>
+                <li><strong>Beautiful Address Preview:</strong> Gradient background with icon for final address</li>
+                <li><strong>Disabled State Handling:</strong> Visual feedback for dependent fields</li>
+            </ul>
+        </div>
+
+        <div class="test-scenarios">
+            <div class="scenario">
+                <h3>🧪 Test Scenario 1: Basic Flow</h3>
+                <ol>
+                    <li>Enter street address</li>
+                    <li>Click on State field</li>
+                    <li>Select "Lagos" from dropdown</li>
+                    <li>Click on LGA field (should show Lagos LGAs)</li>
+                    <li>Select "Ikeja" from LGA dropdown</li>
+                    <li>Enter city name</li>
+                    <li>Verify postal code auto-fills</li>
+                    <li>Check address preview appears</li>
+                </ol>
+            </div>
+
+            <div class="scenario">
+                <h3>🔍 Test Scenario 2: Search & Filter</h3>
+                <ol>
+                    <li>Type "Lag" in State field</li>
+                    <li>Verify Lagos appears in filtered results</li>
+                    <li>Select Lagos</li>
+                    <li>Type "Ik" in LGA field</li>
+                    <li>Verify Ikeja and other "Ik" LGAs appear</li>
+                    <li>Select desired LGA</li>
+                    <li>Verify city field becomes enabled</li>
+                </ol>
+            </div>
+
+            <div class="scenario">
+                <h3>📱 Test Scenario 3: Responsive Design</h3>
+                <ol>
+                    <li>Test on mobile device (< 768px)</li>
+                    <li>Verify fields stack vertically</li>
+                    <li>Test on tablet (768px - 1024px)</li>
+                    <li>Verify 3-column layout works</li>
+                    <li>Test dropdown positioning on small screens</li>
+                    <li>Verify touch interactions work properly</li>
+                </ol>
+            </div>
+
+            <div class="scenario">
+                <h3>⚡ Test Scenario 4: Edge Cases</h3>
+                <ol>
+                    <li>Try to click LGA before selecting state</li>
+                    <li>Verify field is disabled with proper message</li>
+                    <li>Change state after selecting LGA</li>
+                    <li>Verify LGA resets and new options load</li>
+                    <li>Click outside dropdown to close</li>
+                    <li>Test keyboard navigation</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="responsive-note">
+            <h4>📐 Responsive Breakpoints</h4>
+            <p><strong>Mobile (< 768px):</strong> Single column layout, full-width fields</p>
+            <p><strong>Tablet (768px+):</strong> 3-column grid for State/LGA/City</p>
+            <p><strong>Desktop (1024px+):</strong> Optimized spacing and larger dropdowns</p>
+        </div>
+
+        <div class="form-section">
+            <h2>🚀 Integration in Realtor Registration</h2>
+            <div class="address-form">
+                <p><strong>Form Layout:</strong> Address input now has dedicated space (not cramped in grid)</p>
+                <p><strong>Validation:</strong> Required field validation with proper error messages</p>
+                <p><strong>Data Flow:</strong> Address data properly flows to parent component</p>
+                <p><strong>Styling:</strong> Consistent with form theme and purple accent color</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>🔧 Technical Improvements</h3>
+            <ul>
+                <li><strong>Better State Management:</strong> Improved dropdown state handling</li>
+                <li><strong>Event Handling:</strong> Proper focus/blur and click outside detection</li>
+                <li><strong>Performance:</strong> Efficient filtering and rendering</li>
+                <li><strong>Accessibility:</strong> Better labels and keyboard navigation</li>
+                <li><strong>TypeScript:</strong> Full type safety for address data</li>
+                <li><strong>Reusability:</strong> Component can be used in other forms</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
