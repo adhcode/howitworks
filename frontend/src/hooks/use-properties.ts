@@ -8,9 +8,16 @@ export interface PropertyFilters {
   limit?: number;
   location?: string;
   propertyType?: string;
+  listingType?: string;
   minPrice?: number;
   maxPrice?: number;
+  bedrooms?: number;
+  bathrooms?: number;
+  minArea?: number;
+  maxArea?: number;
   status?: string;
+  search?: string;
+  sortBy?: string;
 }
 
 export interface PaginatedPropertiesResponse {
@@ -24,7 +31,13 @@ export interface PaginatedPropertiesResponse {
 }
 
 export const useProperties = (filters: PropertyFilters = {}) => {
-  const [data, setData] = useState<PaginatedResponse<Property> | null>(null);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 1
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,7 +52,25 @@ export const useProperties = (filters: PropertyFilters = {}) => {
       const response = await propertyApi.getAll(mergedFilters);
       console.log('✅ Properties response:', response);
       
-      setData(response);
+      // API returns { properties: [...], pagination: { page, limit, total, pages } }
+      // Handle the actual response structure
+      if (response && typeof response === 'object') {
+        const propertiesData = (response as any).properties || [];
+        const paginationData = (response as any).pagination || {
+          page: 1,
+          limit: 10,
+          total: 0,
+          pages: 1
+        };
+        
+        setProperties(propertiesData);
+        setPagination({
+          page: paginationData.page || 1,
+          limit: paginationData.limit || 10,
+          total: paginationData.total || 0,
+          totalPages: paginationData.pages || 1
+        });
+      }
     } catch (err: any) {
       console.error('❌ Error fetching properties:', err);
       setError(err?.message || 'Failed to load properties');
@@ -58,13 +89,8 @@ export const useProperties = (filters: PropertyFilters = {}) => {
   };
 
   return {
-    properties: data?.data || [],
-    pagination: {
-      page: data?.page || 1,
-      limit: data?.limit || 10,
-      total: data?.total || 0,
-      totalPages: data?.totalPages || 1
-    },
+    properties,
+    pagination,
     loading,
     error,
     refetch

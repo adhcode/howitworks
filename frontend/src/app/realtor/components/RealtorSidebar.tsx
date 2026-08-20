@@ -72,11 +72,14 @@ export default function RealtorSidebar() {
       {/* Logo */}
       <div className="p-6 border-b border-gray-100">
         <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-[#703BF7] to-[#5f2fd6] rounded-xl flex items-center justify-center">
-            <span className="text-white font-bold text-lg">H</span>
+          <div className="w-10 h-10 flex items-center justify-center">
+            <img 
+              src="/logo.svg" 
+              alt="Howitworks Logo" 
+              className="w-10 h-10 object-contain"
+            />
           </div>
           <div>
-            <div className="text-xl font-bold text-gray-900">HowItWorks</div>
             <div className="text-xs text-gray-500">Realtor Portal</div>
           </div>
         </Link>

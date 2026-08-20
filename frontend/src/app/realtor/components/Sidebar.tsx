@@ -118,7 +118,13 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, currentPage, onLo
                 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
             `}>
                 <div className="flex h-16 items-center justify-between px-6">
-                    <h1 className="text-xl font-bold text-[#8157FF]">Howitwork</h1>
+                    <Image
+                        src="/logo.svg"
+                        alt="Howitworks Logo"
+                        width={40}
+                        height={40}
+                        className="h-10 w-10"
+                    />
                     <button
                         onClick={() => setSidebarOpen(false)}
                         className="lg:hidden text-gray-500 hover:text-gray-700"

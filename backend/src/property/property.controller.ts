@@ -18,9 +18,16 @@ export class PropertyController {
   @ApiQuery({ name: 'limit', required: false, type: Number })
   @ApiQuery({ name: 'location', required: false, type: String })
   @ApiQuery({ name: 'propertyType', required: false, type: String })
+  @ApiQuery({ name: 'listingType', required: false, type: String })
   @ApiQuery({ name: 'minPrice', required: false, type: Number })
   @ApiQuery({ name: 'maxPrice', required: false, type: Number })
+  @ApiQuery({ name: 'bedrooms', required: false, type: Number })
+  @ApiQuery({ name: 'bathrooms', required: false, type: Number })
+  @ApiQuery({ name: 'minArea', required: false, type: Number })
+  @ApiQuery({ name: 'maxArea', required: false, type: Number })
   @ApiQuery({ name: 'status', required: false, type: String })
+  @ApiQuery({ name: 'search', required: false, type: String })
+  @ApiQuery({ name: 'sortBy', required: false, type: String })
   async findAll(@Query() query: any) {
     const { page, limit, ...filters } = query;
     return this.propertyService.findAll(

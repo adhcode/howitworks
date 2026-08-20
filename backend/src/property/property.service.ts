@@ -170,21 +170,110 @@ export class PropertyService {
 
     const skip = (page - 1) * limit;
     
-    const where = {};
+    // Build where clause with advanced filtering
+    const where: any = {};
+    
+    // Location search - support partial matches and multiple formats
     if (filters?.location) {
-      (where as any).location = { contains: filters.location, mode: 'insensitive' };
+      where.location = { 
+        contains: filters.location, 
+        mode: 'insensitive' 
+      };
     }
+    
+    // Property type filter
     if (filters?.propertyType) {
-      (where as any).propertyType = filters.propertyType;
+      where.propertyType = filters.propertyType;
     }
+    
+    // Listing type filter (sale/rent/investment)
+    if (filters?.listingType) {
+      where.listingType = filters.listingType;
+    }
+    
+    // Status filter
     if (filters?.status) {
-      (where as any).status = filters.status;
+      where.status = filters.status;
     }
-    if (filters?.minPrice) {
-      (where as any).price = { gte: filters.minPrice };
+    
+    // Price range filter
+    if (filters?.minPrice || filters?.maxPrice) {
+      where.price = {};
+      if (filters.minPrice) {
+        where.price.gte = parseFloat(filters.minPrice);
+      }
+      if (filters.maxPrice) {
+        where.price.lte = parseFloat(filters.maxPrice);
+      }
     }
-    if (filters?.maxPrice) {
-      (where as any).price = { ...(where as any).price, lte: filters.maxPrice };
+    
+    // Bedrooms filter
+    if (filters?.bedrooms) {
+      const bedroomsValue = parseInt(filters.bedrooms);
+      if (!isNaN(bedroomsValue)) {
+        where.bedrooms = bedroomsValue;
+      }
+    }
+    
+    // Bathrooms filter
+    if (filters?.bathrooms) {
+      const bathroomsValue = parseInt(filters.bathrooms);
+      if (!isNaN(bathroomsValue)) {
+        where.bathrooms = bathroomsValue;
+      }
+    }
+    
+    // Area filter
+    if (filters?.minArea || filters?.maxArea) {
+      where.area = {};
+      if (filters.minArea) {
+        where.area.gte = parseFloat(filters.minArea);
+      }
+      if (filters.maxArea) {
+        where.area.lte = parseFloat(filters.maxArea);
+      }
+    }
+    
+    // Full-text search across title and description
+    if (filters?.search) {
+      where.OR = [
+        { title: { contains: filters.search, mode: 'insensitive' } },
+        { description: { contains: filters.search, mode: 'insensitive' } },
+      ];
+    }
+    
+    // Build orderBy clause
+    let orderBy: any = { createdAt: 'desc' }; // Default sorting
+    
+    if (filters?.sortBy) {
+      switch (filters.sortBy) {
+        case 'price_asc':
+          orderBy = { price: 'asc' };
+          break;
+        case 'price_desc':
+          orderBy = { price: 'desc' };
+          break;
+        case 'bedrooms_asc':
+          orderBy = { bedrooms: 'asc' };
+          break;
+        case 'bedrooms_desc':
+          orderBy = { bedrooms: 'desc' };
+          break;
+        case 'area_asc':
+          orderBy = { area: 'asc' };
+          break;
+        case 'area_desc':
+          orderBy = { area: 'desc' };
+          break;
+        case 'newest':
+          orderBy = { createdAt: 'desc' };
+          break;
+        case 'oldest':
+          orderBy = { createdAt: 'asc' };
+          break;
+        default:
+          orderBy = { createdAt: 'desc' };
+      }
     }
 
     const [properties, total] = await Promise.all([
@@ -209,7 +298,7 @@ export class PropertyService {
             },
           },
         },
-        orderBy: { createdAt: 'desc' },
+        orderBy,
         skip,
         take: limit,
       }),

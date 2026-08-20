@@ -37,12 +37,9 @@ const PropertyCard = ({
 
             {/* Content */}
             <div className="mt-4">
-                <h3 className="text-[#1A2A52] text-xl font-semibold mb-2">{title}</h3>
-                <p className="text-[#3A3A3C] text-sm mb-4">
+                <h3 className="text-[#2E2E2E] text-lg font-medium mb-2">{title}</h3>
+                <p className="text-[#666666] text-sm mb-4 line-clamp-2">
                     {description}
-                    <Link href={href} className="text-[#1FD2AF] hover:underline ml-1">
-                        Read More
-                    </Link>
                 </p>
 
                 {/* Features */}
@@ -54,7 +51,7 @@ const PropertyCard = ({
                             width={14}
                             height={16}
                         />
-                        <span className="text-[12px] text-[#3A3A3C]">{bedrooms} Bedroom</span>
+                        <span className="text-[12px] text-[#666666]">{bedrooms} Bedroom</span>
                     </div>
                     <div className="flex items-center gap-2 border border-[#EBEBEB] rounded-[28px] px-[14px] py-[6px]">
                         <Image
@@ -63,7 +60,7 @@ const PropertyCard = ({
                             width={14}
                             height={16}
                         />
-                        <span className="text-[12px] text-[#3A3A3C]">{bathrooms} Bathroom</span>
+                        <span className="text-[12px] text-[#666666]">{bathrooms} Bathroom</span>
                     </div>
                     {hasVilla && (
                         <div className="flex items-center gap-2 border border-[#EBEBEB] rounded-[28px] px-[14px] py-[6px]">
@@ -73,24 +70,24 @@ const PropertyCard = ({
                                 width={14}
                                 height={16}
                             />
-                            <span className="text-[12px] text-[#3A3A3C]">Villa</span>
+                            <span className="text-[12px] text-[#666666]">Villa</span>
                         </div>
                     )}
                 </div>
 
                 {/* Price and CTA */}
-                <div className="flex sm:flex-row gap-10 items-center sm:items-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center">
                     <div>
-                        <span className="text-sm text-[#3A3A3C]">Price</span>
-                        <div className="text-xl font-semibold text-[#1A2A52]">
+                        <span className="text-xs text-[#666666]">Price</span>
+                        <div className="text-lg font-semibold text-[#2E2E2E]">
                             ₦{price.toLocaleString()}
                         </div>
                     </div>
                     <Link
                         href={href}
-                        className="inline-block bg-[#1FD2AF] text-white px-[16px] py-[14px] rounded-[8px] text-[14px] font-medium hover:bg-[#1AB89A] transition-all sm:ml-auto"
+                        className="inline-block bg-[#1FD2AF] text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1AB89A] transition-all sm:ml-auto"
                     >
-                        View Property Details
+                        View Details
                     </Link>
                 </div>
             </div>

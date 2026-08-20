@@ -284,8 +284,8 @@ export default function AdminDashboard() {
                                                 </p>
                                             </div>
                                             <span className={`text-xs px-2 py-1 rounded-full ${lead.status === 'converted' ? 'bg-green-100 text-green-700' :
-                                                    lead.status === 'contacted' ? 'bg-blue-100 text-blue-700' :
-                                                        'bg-yellow-100 text-yellow-700'
+                                                lead.status === 'contacted' ? 'bg-blue-100 text-blue-700' :
+                                                    'bg-yellow-100 text-yellow-700'
                                                 }`}>
                                                 {lead.status}
                                             </span>

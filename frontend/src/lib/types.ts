@@ -48,6 +48,7 @@ export interface Property {
   area?: number;
   propertyType: string;
   status: string;
+  featured: boolean;
   images: string[];
   realtorId: string;
   realtor: Realtor;
@@ -187,5 +188,6 @@ export interface CreateLeadDto {
   phone?: string;
   message?: string;
   propertyId?: string;
-  realtorId: string;
+  realtorId?: string; // Optional - can be assigned later by admin
+  source?: string;
 }

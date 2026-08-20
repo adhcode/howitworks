@@ -27,8 +27,8 @@ const PropertyUpgradeSection = () => {
                             <strong>Don't let your land or building sit idle — let it start paying you!</strong>
                         </p>
                         <p className="text-lg text-[#3A3A3C] mb-8 leading-relaxed">
-                            We help you unlock your property's hidden value through upgrades, remodeling, or shared ownership 
-                            models that generate steady cash flow and appreciation. With our smart valuation tools and expert 
+                            We help you unlock your property's hidden value through upgrades, remodeling, or shared ownership
+                            models that generate steady cash flow and appreciation. With our smart valuation tools and expert
                             property consultants, your real estate can start working for you, not the other way around.
                         </p>
 

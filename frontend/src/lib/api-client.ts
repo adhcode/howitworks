@@ -41,12 +41,23 @@ export class ApiClient {
   }
 
   async get<T>(endpoint: string): Promise<T> {
-    const response = await fetch(`${this.baseURL}${endpoint}`, {
-      method: 'GET',
-      headers: this.getAuthHeaders(),
-    });
+    const url = `${this.baseURL}${endpoint}`;
+    console.log('🔗 Making GET request to:', url);
+    
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: this.getAuthHeaders(),
+        mode: 'cors',
+        credentials: 'include',
+      });
 
-    return this.handleResponse<T>(response);
+      console.log('📨 GET Response status:', response.status);
+      return this.handleResponse<T>(response);
+    } catch (error) {
+      console.error('❌ GET Fetch error:', error);
+      throw error;
+    }
   }
 
   async post<T>(endpoint: string, data?: any): Promise<T> {

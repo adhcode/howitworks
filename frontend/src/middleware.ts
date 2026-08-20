@@ -12,6 +12,8 @@ const publicRoutes = [
   "/properties",
   "/services",
   "/investment-form",
+  "/testimonials",
+  "/faqs",
 ];
 
 export function middleware(request: NextRequest) {

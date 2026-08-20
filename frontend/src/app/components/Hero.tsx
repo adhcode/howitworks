@@ -33,14 +33,12 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <div className="text-center px-4 mt-16 sm:mt-20">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl text-[#1A2A52] font-extrabold leading-tight text-left mb-4 sm:mb-6">
-                        How Real Estate Works.
+                <div className="px-4 mt-16 sm:mt-20">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#2E2E2E] font-bold leading-tight mb-6">
+                        Find Your Dream Home with Trusted Realtors
                     </h1>
-                    <p className="text-[#000000] text-lg md:text-xl max-w-[342px] mb-6 sm:mb-8 text-left leading-relaxed">
-                        Your all-in-one platform for buying, renting, investing, selling, and professional property management.
-                        <br />
-                        We make real estate simple, transparent and rewarding - delivering expert service and simplified property solutions for homeowners, tenants and investors.
+                    <p className="text-[#666666] text-lg mb-8 max-w-[520px] leading-relaxed">
+                        Browse premium properties and connect with expert realtors who care about helping you settle in the perfect place.
                     </p>
                     <div className="flex flex-col gap-3 sm:gap-4">
                         <Link
@@ -49,91 +47,93 @@ const Hero = () => {
                         >
                             Explore Properties
                         </Link>
-                        <Link
-                            href="/contact"
-                            className="inline-block w-full border-2 border-[#1FD2AF] text-[#1FD2AF] px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-[#1FD2AF] hover:text-white transition-all text-base sm:text-lg"
-                        >
-                            Get Started
-                        </Link>
                     </div>
 
                     {/* Stats - Mobile */}
-                    <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8 sm:mt-12 lg:hidden">
-                        <div className="w-full h-[80px] sm:h-[96px] bg-[#f4f5f7] border border-[#1FD2AF] rounded-[10px] flex flex-col items-start p-2 sm:p-4 md:px-5 py-3.5 gap-0.5">
-                            <div className="text-[14px] sm:text-lg md:text-xl lg:text-2xl font-bold text-[#1A2A52]">500+</div>
-                            <div className="text-[10px] sm:text-[10px] md:text-xs text-[#000000] leading-tight">Properties Maintained</div>
+                    <div className="grid grid-cols-3 gap-4 mt-12">
+                        <div className="bg-[#f8f9fa] rounded-xl flex flex-col items-center py-6 px-4">
+                            <div className="text-3xl font-bold text-[#2E2E2E] mb-1">200+</div>
+                            <div className="text-sm text-[#6B7280] text-center">Happy Customers</div>
                         </div>
-                        <div className="w-full h-[80px] sm:h-[96px] bg-[#f4f5f7] border border-[#1FD2AF] rounded-[10px] flex flex-col items-start p-2 sm:p-4 md:px-5 py-3.5 gap-0.5">
-                            <div className="text-[14px] sm:text-lg md:text-xl lg:text-2xl font-bold text-[#1A2A52]">₦2B+</div>
-                            <div className="text-[10px] sm:text-[10px] md:text-xs text-[#000000] leading-tight">Investment Value</div>
+                        <div className="bg-[#f8f9fa] rounded-xl flex flex-col items-center py-6 px-4">
+                            <div className="text-3xl font-bold text-[#2E2E2E] mb-1">1,500+</div>
+                            <div className="text-sm text-[#6B7280] text-center">Properties For Clients</div>
                         </div>
-                        <div className="w-full h-[80px] sm:h-[96px] bg-[#f4f5f7] border border-[#1FD2AF] rounded-[10px] flex flex-col items-start p-2 sm:p-4 md:px-5 py-3.5 gap-0.5">
-                            <div className="text-[14px] sm:text-lg md:text-xl lg:text-2xl font-bold text-[#1A2A52]">98%</div>
-                            <div className="text-[10px] sm:text-[10px] md:text-xs text-[#000000] leading-tight">Client Satisfaction</div>
+                        <div className="bg-[#f8f9fa] rounded-xl flex flex-col items-center py-6 px-4">
+                            <div className="text-3xl font-bold text-[#2E2E2E] mb-1">2K+</div>
+                            <div className="text-sm text-[#6B7280] text-center">Trusted Realtors</div>
                         </div>
                     </div>
 
                     {/* Feature Cards - Mobile */}
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-12 mb-8 sm:mb-12">
-                        <Link href="/services/find-home" className="bg-[#ffffff] p-3 sm:p-4 md:p-6 rounded-[10px] border border-[#1FD2AF] transition-all h-[120px] sm:h-[140px] md:h-[160px] flex flex-col items-center justify-center relative group hover:bg-[#0F1A3A] hover:shadow-lg">
-                            <GoArrowUpRight className="absolute top-2 right-2 sm:top-3 sm:right-3 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity w-4 h-4 sm:w-5 sm:h-5" />
-                            <div className='flex flex-col space-y-2 sm:space-y-3 items-center justify-center text-center'>
+                    <div className="grid grid-cols-2 gap-4 mt-8 sm:mt-12 mb-8 sm:mb-12">
+                        <div className="bg-[#ffffff] p-6 rounded-lg border border-[#E5E7EB] transition-all h-[160px] sm:h-[180px] flex flex-col relative group hover:shadow-md">
+                            <svg className="absolute top-4 right-4 w-5 h-5 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                            <div className='flex flex-col items-center justify-center flex-1 text-center'>
                                 <Image
                                     src="/icons/iconcontainer1.svg"
                                     alt="Find Home"
-                                    width={40}
-                                    height={40}
+                                    width={48}
+                                    height={48}
                                     quality={90}
-                                    className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]"
+                                    className="mb-4"
                                 />
-                                <h3 className="text-[#1A2A52] font-semibold text-xs sm:text-sm md:text-base leading-tight">Find Your Dream Home</h3>
+                                <h3 className="text-[#2E2E2E] font-normal text-sm leading-tight">Find Your Dream Home</h3>
                             </div>
-                        </Link>
+                        </div>
 
-                        <Link href="/services/unlock-value" className="bg-[#ffffff] p-3 sm:p-4 md:p-6 rounded-[10px] border border-[#1FD2AF] transition-all h-[120px] sm:h-[140px] md:h-[160px] flex flex-col items-center justify-center relative group hover:bg-[#0F1A3A] hover:shadow-lg">
-                            <GoArrowUpRight className="absolute top-2 right-2 sm:top-3 sm:right-3 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity w-4 h-4 sm:w-5 sm:h-5" />
-                            <div className='flex flex-col space-y-2 sm:space-y-3 items-center justify-center text-center'>
+                        <div className="bg-[#ffffff] p-6 rounded-lg border border-[#E5E7EB] transition-all h-[160px] sm:h-[180px] flex flex-col relative group hover:shadow-md">
+                            <svg className="absolute top-4 right-4 w-5 h-5 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                            <div className='flex flex-col items-center justify-center flex-1 text-center'>
                                 <Image
                                     src="/icons/iconcontainer2.svg"
                                     alt="Unlock Value"
-                                    width={40}
-                                    height={40}
+                                    width={48}
+                                    height={48}
                                     quality={90}
-                                    className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]"
+                                    className="mb-4"
                                 />
-                                <h3 className="text-[#1A2A52] font-semibold text-xs sm:text-sm md:text-base leading-tight">Unlock Property Value</h3>
+                                <h3 className="text-[#2E2E2E] font-normal text-sm leading-tight">Unlock Property Value</h3>
                             </div>
-                        </Link>
+                        </div>
 
-                        <Link href="/services/property-management" className="bg-[#ffffff] p-3 sm:p-4 md:p-6 rounded-[10px] border border-[#1FD2AF] transition-all h-[120px] sm:h-[140px] md:h-[160px] flex flex-col items-center justify-center relative group hover:bg-[#0F1A3A] hover:shadow-lg">
-                            <GoArrowUpRight className="absolute top-2 right-2 sm:top-3 sm:right-3 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity w-4 h-4 sm:w-5 sm:h-5" />
-                            <div className='flex flex-col space-y-2 sm:space-y-3 items-center justify-center text-center'>
+                        <div className="bg-[#ffffff] p-6 rounded-lg border border-[#E5E7EB] transition-all h-[160px] sm:h-[180px] flex flex-col relative group hover:shadow-md">
+                            <svg className="absolute top-4 right-4 w-5 h-5 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                            <div className='flex flex-col items-center justify-center flex-1 text-center'>
                                 <Image
                                     src="/icons/iconcontainer3.svg"
                                     alt="Property Management"
-                                    width={40}
-                                    height={40}
+                                    width={48}
+                                    height={48}
                                     quality={90}
-                                    className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]"
+                                    className="mb-4"
                                 />
-                                <h3 className="text-[#1A2A52] font-semibold text-xs sm:text-sm md:text-base leading-tight">Property Maintanance and Management</h3>
+                                <h3 className="text-[#2E2E2E] font-normal text-sm leading-tight">Effortless Property Management</h3>
                             </div>
-                        </Link>
+                        </div>
 
-                        <Link href="/services/smart-investments" className="bg-[#ffffff] p-3 sm:p-4 md:p-6 rounded-[10px] border border-[#1FD2AF] transition-all h-[120px] sm:h-[140px] md:h-[160px] flex flex-col items-center justify-center relative group hover:bg-[#0F1A3A] hover:shadow-lg">
-                            <GoArrowUpRight className="absolute top-2 right-2 sm:top-3 sm:right-3 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity w-4 h-4 sm:w-5 sm:h-5" />
-                            <div className='flex flex-col space-y-2 sm:space-y-3 items-center justify-center text-center'>
+                        <div className="bg-[#ffffff] p-6 rounded-lg border border-[#E5E7EB] transition-all h-[160px] sm:h-[180px] flex flex-col relative group hover:shadow-md">
+                            <svg className="absolute top-4 right-4 w-5 h-5 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                            <div className='flex flex-col items-center justify-center flex-1 text-center'>
                                 <Image
                                     src="/icons/iconcontainer4.svg"
                                     alt="Smart Investments"
-                                    width={40}
-                                    height={40}
+                                    width={48}
+                                    height={48}
                                     quality={90}
-                                    className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]"
+                                    className="mb-4"
                                 />
-                                <h3 className="text-[#1A2A52] font-semibold text-xs sm:text-sm md:text-base leading-tight">Smart Investments, Informed Decisions</h3>
+                                <h3 className="text-[#2E2E2E] font-normal text-sm leading-tight">Smart Investments, Informed Decisions</h3>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,13 +143,11 @@ const Hero = () => {
                 <div className="grid lg:grid-cols-2 items-center relative">
                     {/* Left Content */}
                     <div className="relative z-10 px-20">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl text-[#1A2A52] font-bold leading-tight text-left mb-6">
-                            How Real Estate Works.
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#2E2E2E] font-bold leading-tight mb-6">
+                            Find Your Dream Home with Trusted Realtors
                         </h1>
-                        <p className="text-[#000000] text-xl mb-8 max-w-[520px] leading-relaxed">
-                            Your all-in-one platform for buying, renting, investing, selling, and professional property management.
-                        <br />
-                        We make real estate simple, transparent and rewarding - delivering expert service and simplified property solutions for homeowners, tenants and investors.
+                        <p className="text-[#666666] text-lg mb-8 max-w-[520px] leading-relaxed">
+                            Browse premium properties and connect with expert realtors who care about helping you settle in the perfect place.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
@@ -158,27 +156,21 @@ const Hero = () => {
                             >
                                 Explore Properties
                             </Link>
-                            <Link
-                                href="/contact"
-                                className="inline-block border-2 border-[#1FD2AF] text-[#1FD2AF] px-8 py-4 rounded-lg font-semibold hover:bg-[#1FD2AF] hover:text-white transition-all text-lg text-center"
-                            >
-                                Get Started
-                            </Link>
                         </div>
 
                         {/* Stats */}
                         <div className="grid grid-cols-3 gap-4 mt-12">
-                            <div className="bg-[#f4f5f7] border border-[#1FD2AF]  max-w-[192.68px] rounded-[10px] flex flex-col items-start py-[14px] px-[20px] gap-0.5">
-                                <div className="text-2xl font-bold text-[#1A2A52]">500+</div>
-                                <div className="text-sm text-[#000000]">Properties Maintained</div>
+                            <div className="bg-[#f8f9fa] rounded-xl flex flex-col items-center py-6 px-4">
+                                <div className="text-3xl font-bold text-[#2E2E2E] mb-1">200+</div>
+                                <div className="text-sm text-[#6B7280]">Happy Customers</div>
                             </div>
-                            <div className="bg-[#f4f5f7] border border-[#1FD2AF]  max-w-[192.68px] rounded-[10px] flex flex-col items-start py-[14px] px-[20px] gap-0.5">
-                                <div className="text-2xl font-bold text-[#1A2A52]">₦2B+</div>
-                                <div className="text-sm text-[#000000]">Investment Value</div>
+                            <div className="bg-[#f8f9fa] rounded-xl flex flex-col items-center py-6 px-4">
+                                <div className="text-3xl font-bold text-[#2E2E2E] mb-1">1,500+</div>
+                                <div className="text-sm text-[#6B7280]">Properties For Clients</div>
                             </div>
-                            <div className="bg-[#f4f5f7] border border-[#1FD2AF]  max-w-[192.68px] rounded-[10px] flex flex-col items-start py-[14px] px-[20px] gap-0.5">
-                                <div className="text-2xl font-bold text-[#1A2A52]">98%</div>
-                                <div className="text-sm text-[#000000]">Client Satisfaction</div>
+                            <div className="bg-[#f8f9fa] rounded-xl flex flex-col items-center py-6 px-4">
+                                <div className="text-3xl font-bold text-[#2E2E2E] mb-1">2K+</div>
+                                <div className="text-sm text-[#6B7280]">Trusted Realtors</div>
                             </div>
                         </div>
                     </div>
@@ -214,62 +206,70 @@ const Hero = () => {
 
             {/* Feature Cards - Full Width Section */}
             <div className="hidden lg:block w-screen bg-[#F4F5F7] py-8 border-b border-t border-[#EBEBEB]">
-                <div className="grid grid-cols-4 gap-[30px] max-w-[1500px] mx-auto px-4">
-                    <Link href="/services/find-home" className="bg-white p-6 rounded-[10px] border border-[#1FD2AF] transition-all relative group hover:shadow-lg hover:border-[#1FD2AF]">
-                        <GoArrowUpRight className="absolute top-4 right-4 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity" />
-                        <div className='flex flex-col space-y-4 items-center justify-center'>
+                <div className="grid grid-cols-4 gap-6 max-w-[1500px] mx-auto px-4">
+                    <div className="bg-white p-8 rounded-lg border border-[#E5E7EB] transition-all relative group hover:shadow-md">
+                        <svg className="absolute top-4 right-4 w-6 h-6 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                        <div className='flex flex-col space-y-5 items-center justify-center pt-4'>
                             <Image
                                 src="/icons/iconcontainer1.svg"
                                 alt="Find Home"
-                                width={60}
-                                height={60}
+                                width={56}
+                                height={56}
                                 quality={90}
                             />
-                            <h3 className="text-[#1A2A52] font-semibold text-lg">Find Your Dream Home</h3>
+                            <h3 className="text-[#2E2E2E] font-normal text-base text-center">Find Your Dream Home</h3>
                         </div>
-                    </Link>
+                    </div>
 
-                    <Link href="/services/unlock-value" className="bg-white p-6 rounded-[10px] border border-[#1FD2AF] transition-all relative group hover:shadow-lg hover:border-[#1FD2AF]">
-                        <GoArrowUpRight className="absolute top-4 right-4 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity" />
-                        <div className='flex flex-col space-y-4 items-center justify-center'>
+                    <div className="bg-white p-8 rounded-lg border border-[#E5E7EB] transition-all relative group hover:shadow-md">
+                        <svg className="absolute top-4 right-4 w-6 h-6 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                        <div className='flex flex-col space-y-5 items-center justify-center pt-4'>
                             <Image
                                 src="/icons/iconcontainer2.svg"
                                 alt="Unlock Value"
-                                width={60}
-                                height={60}
+                                width={56}
+                                height={56}
                                 quality={90}
                             />
-                            <h3 className="text-[#1A2A52] font-semibold text-lg">Unlock Property Value</h3>
+                            <h3 className="text-[#2E2E2E] font-normal text-base text-center">Unlock Property Value</h3>
                         </div>
-                    </Link>
+                    </div>
 
-                    <Link href="/services/property-management" className="bg-white p-6 rounded-[10px] border border-[#1FD2AF] transition-all relative group hover:shadow-lg hover:border-[#1FD2AF]">
-                        <GoArrowUpRight className="absolute top-4 right-4 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity" />
-                        <div className='flex flex-col space-y-4 items-center justify-center text-center'>
+                    <div className="bg-white p-8 rounded-lg border border-[#E5E7EB] transition-all relative group hover:shadow-md">
+                        <svg className="absolute top-4 right-4 w-6 h-6 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                        <div className='flex flex-col space-y-5 items-center justify-center pt-4'>
                             <Image
                                 src="/icons/iconcontainer3.svg"
                                 alt="Property Management"
-                                width={60}
-                                height={60}
+                                width={56}
+                                height={56}
                                 quality={90}
                             />
-                            <h3 className="text-[#1A2A52] font-semibold text-lg">Property Maintanance and Management</h3>
+                            <h3 className="text-[#2E2E2E] font-normal text-base text-center">Effortless Property Management</h3>
                         </div>
-                    </Link>
+                    </div>
 
-                    <Link href="/services/smart-investments" className="bg-white p-6 rounded-[10px] border border-[#1FD2AF] transition-all relative group hover:shadow-lg hover:border-[#1FD2AF]">
-                        <GoArrowUpRight className="absolute top-4 right-4 text-[#1A2A52] opacity-60 group-hover:opacity-100 transition-opacity" />
-                        <div className='flex flex-col space-y-4 items-center justify-center'>
+                    <div className="bg-white p-8 rounded-lg border border-[#E5E7EB] transition-all relative group hover:shadow-md">
+                        <svg className="absolute top-4 right-4 w-6 h-6 text-[#1A2A52]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                        </svg>
+                        <div className='flex flex-col space-y-5 items-center justify-center pt-4'>
                             <Image
                                 src="/icons/iconcontainer4.svg"
                                 alt="Smart Investments"
-                                width={60}
-                                height={60}
+                                width={56}
+                                height={56}
                                 quality={90}
                             />
-                            <h3 className="text-[#1A2A52] font-semibold text-lg">Smart Investments, Informed Decisions</h3>
+                            <h3 className="text-[#1A2A52] font-normal text-base text-center">Smarter Investment Decisions</h3>
                         </div>
-                    </Link>
+                    </div>
                 </div>
             </div>
 

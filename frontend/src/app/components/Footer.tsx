@@ -124,6 +124,10 @@ const Footer = () => {
                         <span className="mb-2 sm:mb-0 text-center">©2025 Howitwork. All Rights Reserved.</span>
                         <Link href="/terms" className="hover:text-[#1FD2AF] text-gray-300 transition-colors">Terms & Conditions</Link>
                         <Link href="/privacy" className="hover:text-[#1FD2AF] text-gray-300 transition-colors">Privacy Policy</Link>
+                        <span className="hidden sm:inline text-gray-500">|</span>
+                        <Link href="/auth/login" className="hover:text-[#1FD2AF] text-gray-300 transition-colors font-medium">
+                            Realtors Login
+                        </Link>
                     </div>
                     <div className="flex gap-6 order-1 sm:order-2 mb-4 sm:mb-0">
                         <Link href="#" aria-label="Facebook" className="hover:text-[#1FD2AF] transition-colors">

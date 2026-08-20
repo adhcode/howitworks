@@ -5,10 +5,8 @@ import Blog from './components/Blog';
 import FAQ from './components/FAQ';
 import VideoShowcase from './components/VideoShowcase';
 import ReferralTracker from './components/ReferralTracker';
+import FeaturedProperties from './components/FeaturedProperties';
 import PropertySalesSection from './components/home/PropertySalesSection';
-import MaintenanceSection from './components/home/MaintenanceSection';
-import FractionalInvestmentSection from './components/home/FractionalInvestmentSection';
-import PropertyUpgradeSection from './components/home/PropertyUpgradeSection';
 
 export default function Home() {
   return (
@@ -17,13 +15,10 @@ export default function Home() {
         <ReferralTracker />
       </Suspense>
       <Hero />
-      <PropertySalesSection />
-      <MaintenanceSection />
-      <FractionalInvestmentSection />
-      <PropertyUpgradeSection />
+      <FeaturedProperties />
       <Testimonials />
-      <Blog />
       <FAQ />
+      <Blog />
       <VideoShowcase />
     </main>
   );

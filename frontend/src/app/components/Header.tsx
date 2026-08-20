@@ -59,12 +59,6 @@ const Header = () => {
                     {/* Right Side Buttons - Desktop */}
                     <div className="hidden lg:flex items-center gap-4 w-[220px] justify-end">
                         <Link
-                            href="/auth/login"
-                            className="px-4 py-2 text-base font-semibold text-[#1A2A52] hover:text-[#1FD2AF] transition-colors"
-                        >
-                            Login
-                        </Link>
-                        <Link
                             href="/contact"
                             className="px-6 py-3 rounded-lg bg-[#1FD2AF] text-white text-base font-semibold hover:bg-[#1AB89A] transition-all"
                         >
@@ -121,13 +115,6 @@ const Header = () => {
                                 Blog
                             </Link>
                             <div className="border-t border-[#0F1A3A] pt-4 mt-2">
-                                <Link
-                                    href="/auth/login"
-                                    className="px-4 py-2 text-base font-semibold text-white hover:text-[#1FD2AF] transition-colors block"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    Login
-                                </Link>
                                 <Link
                                     href="/contact"
                                     className="px-4 py-2 text-base font-semibold text-white hover:text-[#1FD2AF] transition-colors block"

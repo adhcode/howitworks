@@ -120,10 +120,10 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, currentPage, onLo
                 <div className="flex h-16 items-center justify-between px-6">
                     <Image
                         src="/logo.svg"
-                        alt="Howitwork Logo"
-                        width={120}
-                        height={32}
-                        className="h-8 w-auto"
+                        alt="Howitworks Logo"
+                        width={40}
+                        height={40}
+                        className="h-10 w-10"
                     />
                     <button
                         onClick={() => setSidebarOpen(false)}

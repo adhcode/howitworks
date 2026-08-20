@@ -51,14 +51,22 @@ export const propertyApi = {
     page?: number; 
     limit?: number; 
     location?: string; 
-    propertyType?: string; 
+    propertyType?: string;
+    listingType?: string;
     minPrice?: number; 
-    maxPrice?: number; 
+    maxPrice?: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    minArea?: number;
+    maxArea?: number;
+    status?: string;
+    search?: string;
+    sortBy?: string;
   }) => {
     const searchParams = new URLSearchParams();
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
-        if (value !== undefined) {
+        if (value !== undefined && value !== null && value !== '') {
           searchParams.append(key, value.toString());
         }
       });
