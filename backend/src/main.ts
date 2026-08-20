@@ -18,7 +18,13 @@ async function bootstrap() {
             // Allow requests with no origin (like mobile apps, curl, Postman)
             if (!origin) return callback(null, true);
             
-            if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+            // Check if origin matches allowed origins
+            const isAllowed = allowedOrigins.some(allowedOrigin => origin === allowedOrigin);
+            
+            // Also allow any Vercel deployment URL (*.vercel.app)
+            const isVercelDomain = origin.endsWith('.vercel.app');
+            
+            if (isAllowed || isVercelDomain || process.env.NODE_ENV === 'development') {
                 callback(null, true);
             } else {
                 console.warn(`⚠️  CORS blocked origin: ${origin}`);
