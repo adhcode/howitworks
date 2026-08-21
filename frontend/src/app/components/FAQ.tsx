@@ -58,7 +58,7 @@ const FAQ = () => {
                     </div>
                     <Link
                         href="/faqs"
-                        className="text-[#2E2E2E] hidden lg:block font-semibold transition-all text-lg border-2 border-[#2E2E2E] bg-transparent rounded-lg px-6 py-3 hover:bg-[#2E2E2E] hover:text-white self-start"
+                        className="text-[#2E2E2E] hidden lg:block font-semibold transition-all text-lg border-2 border-[#2E2E2E] bg-transparent rounded-lg px-6 py-3 hover:bg-[#1A2A52] hover:text-white self-start"
                     >
                         View All FAQs
                     </Link>

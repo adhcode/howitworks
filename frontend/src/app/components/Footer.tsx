@@ -34,7 +34,7 @@ const Footer = () => {
                     </div>
                     <Link
                         href="/properties"
-                        className="bg-[#1FD2AF] w-full sm:w-auto text-white px-[20px] py-[14px] rounded-lg font-semibold hover:bg-[#1AB89A] transition-all whitespace-nowrap text-center text-lg"
+                        className="bg-[#1A2A52] w-full sm:w-auto text-white px-[20px] py-[14px] rounded-lg font-semibold hover:bg-[#1A2A52] transition-all whitespace-nowrap text-center text-lg"
                     >
                         Explore Properties
                     </Link>

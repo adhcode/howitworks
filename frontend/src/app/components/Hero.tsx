@@ -2,14 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { GoArrowUpRight } from "react-icons/go";
 
 const Hero = () => {
     return (
         <section className="relative w-full bg-white overflow-hidden">
             {/* Mobile Hero */}
             <div className="lg:hidden">
-                <div className="relative w-full h-[400px] mb-8">
+                <div className="relative w-full h-[400px] mb-12">
                     <Image
                         src="/hero-mobile.png"
                         alt="Modern dream home"
@@ -43,7 +42,7 @@ const Hero = () => {
                     <div className="flex flex-col gap-3 sm:gap-4">
                         <Link
                             href="/properties"
-                            className="inline-block w-full bg-[#1FD2AF] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-[#1AB89A] transition-all text-base sm:text-lg"
+                            className="inline-block w-full text-center bg-[#1A2A52] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-[#2A3A62] transition-all text-base sm:text-lg"
                         >
                             Explore Properties
                         </Link>
@@ -152,7 +151,7 @@ const Hero = () => {
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
                                 href="/properties"
-                                className="inline-block bg-[#1FD2AF] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#1AB89A] transition-all text-lg text-center"
+                                className="inline-block bg-[#1A2A52] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#2A3A62] transition-all text-lg text-center"
                             >
                                 Explore Properties
                             </Link>
@@ -267,7 +266,7 @@ const Hero = () => {
                                 height={56}
                                 quality={90}
                             />
-                            <h3 className="text-[#1A2A52] font-normal text-base text-center">Smarter Investment Decisions</h3>
+                            <h3 className="text-[#2E2E2E] font-normal text-base text-center">Smarter Investment Decisions</h3>
                         </div>
                     </div>
                 </div>
@@ -290,8 +289,8 @@ const Hero = () => {
                     left: -1px;
                     border-radius: inherit;
                     border: 1px solid transparent;
-                    background: linear-gradient(40.65deg, #1FD2AF 0.85%, rgba(31, 210, 175, 0) 34.8%),
-                        linear-gradient(219.04deg, #1FD2AF -6.93%, rgba(31, 210, 175, 0) 52.6%);
+                    background: linear-gradient(40.65deg, #1A2A52 0.85%, rgba(26, 42, 82, 0) 34.8%),
+                        linear-gradient(219.04deg, #1A2A52 -6.93%, rgba(26, 42, 82, 0) 52.6%);
                     -webkit-mask: 
                         linear-gradient(#fff 0 0) content-box, 
                         linear-gradient(#fff 0 0);
