@@ -58,9 +58,9 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
 
     const port = process.env.PORT || 3004;
-    await app.listen(port);
+    await app.listen(port, '0.0.0.0');
 
-    console.log(`🚀 Server running on http://localhost:${port}`);
+    console.log(`🚀 Server running on http://0.0.0.0:${port}`);
     console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
     console.log(`✅ CORS: Vercel wildcard enabled (*.vercel.app)`);
 }
