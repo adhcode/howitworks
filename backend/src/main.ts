@@ -21,10 +21,19 @@ async function bootstrap() {
             // Check if origin matches allowed origins
             const isAllowed = allowedOrigins.some(allowedOrigin => origin === allowedOrigin);
             
-            // Also allow any Vercel deployment URL (*.vercel.app)
+            // Allow Vercel deployment URLs (*.vercel.app)
             const isVercelDomain = origin.endsWith('.vercel.app');
             
-            if (isAllowed || isVercelDomain || process.env.NODE_ENV === 'development') {
+            // Allow howitworks.com.ng domains (all subdomains including www)
+            const isHowitworksDomain = origin === 'https://howitworks.com.ng' || 
+                                       origin === 'https://www.howitworks.com.ng' ||
+                                       origin === 'https://app.howitworks.com.ng' ||
+                                       origin === 'http://howitworks.com.ng' ||
+                                       origin === 'http://www.howitworks.com.ng' ||
+                                       origin === 'http://app.howitworks.com.ng' ||
+                                       origin.endsWith('.howitworks.com.ng');
+            
+            if (isAllowed || isVercelDomain || isHowitworksDomain || process.env.NODE_ENV === 'development') {
                 callback(null, true);
             } else {
                 console.warn(`⚠️  CORS blocked origin: ${origin}`);
@@ -62,7 +71,10 @@ async function bootstrap() {
 
     console.log(`🚀 Server running on http://0.0.0.0:${port}`);
     console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
-    console.log(`✅ CORS: Vercel wildcard enabled (*.vercel.app)`);
+    console.log(`✅ CORS: Multiple domains enabled`);
+    console.log(`   - *.vercel.app (Vercel deployments)`);
+    console.log(`   - *.howitworks.com.ng (Production domains)`);
+    console.log(`   - Configured origins: ${allowedOrigins.join(', ')}`);
 }
 
 bootstrap();
